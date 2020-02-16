@@ -15,7 +15,7 @@
 # Tokenize (each word becomes its own feature)
 
 from keras.models import Sequential
-from keras.layers import LSTM, Dense, Dropout, Masking, Embedding
+from keras.layers import LSTM, Dense, Dropout, Masking, Embedding, CuDNNLSTM
 
 model = Sequential()
 
