@@ -2,6 +2,7 @@
 
 import snowflake.connector
 import os
+import nltk
 
 PASSWORD = os.getenv('SNOWSQL_PWD')
 WAREHOUSE = os.getenv('SNOWWAREHOUSE')
@@ -24,4 +25,4 @@ sql = 'SELECT * FROM CNNPOC.PUBLIC.LABELLEDREVIEWSNEW'
 cur.execute(sql)
 
 df = cur.fetch_pandas_all()
-print(df)
+
