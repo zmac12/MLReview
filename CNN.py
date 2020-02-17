@@ -24,15 +24,17 @@ from numpy import array
 from sklearn.model_selection import train_test_split
 
 
+# Snowflake Credentials from env variables #
 PASSWORD = os.getenv('SNOWSQL_PWD')
 WAREHOUSE = os.getenv('SNOWWAREHOUSE')
 ACCOUNT = os.getenv('SNOWACCT')
 USER = os.getenv('SNOWUSER')
 
+# Connection Manager for Snowflake Instance #
 con = snowflake.connector.connect(
-    user='zachmcq',
-    password='seQ2nsatio2nal',
-    account='cfa83386.us-east-1',
+    user=USER,
+    password=PASSWORD,
+    account=ACCOUNT,
     warehouse=WAREHOUSE,
     schema='PUBLIC',
     database='CNNPOC'
