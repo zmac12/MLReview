@@ -59,11 +59,11 @@ df = cur.fetch_pandas_all()
 # Start of Convolutional Models #
 
 # Yelp Log Reg for baseline test #
-df_yelp = df[df['source'] == 'yelp']
+df_yelp = df[df['RECORDSOURCE'] == 'yelp']
 
-sentences = df_yelp['sentence'].values
+sentences = df_yelp['SENTENCE'].values
 
-y = df_yelp['label'].values
+y = df_yelp['LABEL'].values
 sentences_train, sentences_test, y_train, y_test = train_test_split(sentences, y, test_size=0.25, random_state=1000)
 
 vectorizer = CountVectorizer()
@@ -79,10 +79,10 @@ score = classifier.score(X_test, y_test)
 print('Accuracy of Log Reg: ', score)
 
 # Log Reg for each unique source in dataframe #
-for source in df['source'].unique():
-    df_source = df[df['source'] == source]
-    sentences = df_source['sentence'].values
-    y = df_source['label'].values
+for source in df['RECORDSOURCE'].unique():
+    df_source = df[df['RECORDSOURCE'] == source]
+    sentences = df_source['SENTENCE'].values
+    y = df_source['LABEL'].values
 
     sentences_train, sentences_test, y_train, y_test = train_test_split(sentences, y, test_size=0.25, random_state=1000)
 
@@ -95,3 +95,4 @@ for source in df['source'].unique():
     classifier.fit(X_train, y_train)
     score = classifier.score(X_test, y_test)
     print('Accuracy for {} data: {:.4f}'.format(source, score))
+
